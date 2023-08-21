@@ -1,7 +1,7 @@
 import { object,string,number } from "zod";
 
 
-export const createUserSchema = object({
+export const transferSchema = object({
 
 body:object({
     recipient_email:string({

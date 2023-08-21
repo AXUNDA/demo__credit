@@ -1,9 +1,19 @@
 import { Request,Response,NextFunction, } from "express";
+import CustomError from "../errors/custom_error";
 
 export async function errorHandler(err:any, req:Request, res:Response, next:NextFunction){
-    return  res.status(500).json({
-        msg: err.message,
-        success: false,
-      });
+  if(err instanceof CustomError){
+    return  res.status(err.statusCode).json({
+      msg: err.message,
+      success: false,
+    });
+
+  }else{
+    return res.status(500).json({
+      msg: err.message,
+      success: false,
+    });
+  }
+    
 
 }
