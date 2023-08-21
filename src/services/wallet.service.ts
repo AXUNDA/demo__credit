@@ -17,35 +17,31 @@ export default {
         if(data.length > 0){
             const wallet = await this.getWallet(user_id)
             console.log(wallet)
-
             return wallet
-
         }else{
             throw new CustomError("unable to create wallet",500)
-
         }
 
     },
 
     async topUp(user_id:string,amount:number){
-         await db('wallets').where({user_id}).increment("balance",amount)
+         await db('wallet').where({user_id}).increment("balance",amount)
         const wallet =  await this.getWallet(user_id)
         return wallet
     },
 
     async withdraw(user_id:string,amount:number){
-         await db('wallets').where({user_id}).decrement("balance",amount)
+         await db('wallet').where({user_id}).decrement("balance",amount)
          const wallet =  await this.getWallet(user_id)
          return wallet
-
     },
+
     async transfer(user_id:string,amount:number,recipient_email:string){
-        const recipient = await authService.getUser({emails:recipient_email})
-        await db('wallets').where({user_id}).decrement("balance",amount)
-        await db('wallets').where({user_id:recipient.user_id}).increment("balance",amount)
+        const recipient = await authService.getUser({email:recipient_email})
+        await db('wallet').where({user_id}).decrement("balance",amount)
+        await db('wallet').where({user_id:recipient.user_id}).increment("balance",amount)
         const wallet = await this.getWallet(user_id)
         return wallet
-
     }
 
 }

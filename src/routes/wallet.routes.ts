@@ -9,6 +9,6 @@ router.use(checkToken)
 router.get('/',walletController.getBalance)
 router.post('/transfer',verifyBalance,walletController.transfer)
 router.post('/withdraw',verifyBalance,walletController.withdraw)
-router.post('/topup',verifyBalance,walletController.topUp)
+router.post('/topup',walletController.topUp)
 
 export default router

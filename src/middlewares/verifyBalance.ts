@@ -5,8 +5,10 @@ import walletService from "../services/wallet.service";
 export default async function verifyBalance(req: Request, res: Response, next: NextFunction){
     try {
         const {user_id} = res.locals.user
-        const amount = req.body
+        const {amount} = req.body
         const wallet = await walletService.getWallet(user_id)
+     
+      
         if(amount > wallet.balance){
             return res.status(400).json({
                 success:false,
