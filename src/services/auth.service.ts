@@ -63,7 +63,8 @@ export default {
       if(status === true){
         delete user.password
         const token = await jwtService.sign(user)
-        return {token}
+        const wallet =await walletService.getWallet(user.user_id)
+        return {token,wallet}
 
       }  else{
         throw new CustomError("invalid credentials",400)

@@ -10,6 +10,6 @@ body:object({
 
       amount:number({
             required_error:"transfer amount is required"
-      }).min(10, "minimum amount is 10")
+      }).min(10, "minimum amount is 10").max(1000,"maximum amount is 1000")
 })   
 })
