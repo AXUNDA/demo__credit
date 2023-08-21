@@ -2,6 +2,7 @@ import db from "../db/database";
 import * as argon2 from "argon2";
 import CustomError from "../errors/custom_error";
 import jwtService from "./jwt.service";
+import walletService from "./wallet.service";
 
 
 type userDetails={
@@ -19,15 +20,21 @@ export default {
             const response = await db("users").insert({email:body.email.toLowerCase(),password:hash})
             if(response.length > 0){
                 const user = await this.getUser({email:body.email})
+                const wallet = await walletService.createWallet(user.user_id)
                 delete user.password
+                delete wallet.user_id
+
            
 
                 const token = await jwtService.sign(user)
+             
+
           
                
                 return {
                     token,
-                    user
+                    user,
+                    wallet
                 }
                
             }
@@ -69,21 +76,16 @@ export default {
     },
 
     async getUser(query:any){
-        
             const data = await  db('users').select("*").from("users").where(query)
-     
+
             if(data.length > 0){
                 const user = data[0]
-              
-        
-
            return user
-
-
             }else{
             throw new CustomError("user not found",404)
 
             }
 
-    }
+    },
+   
 }

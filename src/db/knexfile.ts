@@ -13,7 +13,7 @@ const  config: any = {
 
       user: 'root',
       password: 'dondizzy12',
-      database: 'lensqr',
+      database: 'lendsqr',
     },
     migrations: {
       directory: path.join(__dirname, 'migrations'),

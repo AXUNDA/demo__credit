@@ -16,10 +16,11 @@ export async function up(knex: Knex): Promise<void> {
 
   await knex.schema.createTable('wallet', function (table) {
     // table.uuid('wallet_id').primary();
-    table.uuid('wallet_id').defaultTo(knex.raw('(UUID())')).primary();
+    // table.uuid('wallet_id',{ useBinaryUuid: true }).defaultTo(knex.raw('(UUID())')).primary();
+    table.increments('wallet_id').primary().notNullable()
 
     table.uuid('user_id').unique().notNullable().references('user_id').inTable('users');
-    table.integer('balance').notNullable().defaultTo(0);
+    table.integer('balance').notNullable().defaultTo(0).notNullable();
     table.timestamps(true, true);
   });
 }
