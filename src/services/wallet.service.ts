@@ -1,6 +1,8 @@
+
 import db from "../db/database";
 import CustomError from "../errors/custom_error";
 import authService from "./auth.service";
+import uuid from 'uuid-random';
 
 export default {
     async getWallet(user_id:string){
@@ -13,7 +15,7 @@ export default {
         }
     },
     async createWallet(user_id:string){
-        const data = await db('wallet').insert({user_id})
+        const data = await db('wallet').insert({user_id,wallet_id:uuid()})
         if(data.length > 0){
             const wallet = await this.getWallet(user_id)
             console.log(wallet)
@@ -25,23 +27,30 @@ export default {
     },
 
     async topUp(user_id:string,amount:number){
-         await db('wallet').where({user_id}).increment("balance",amount)
+       const  amountInFloat= this.toFloat(amount)
+      
+         await db('wallet').where({user_id}).increment("balance",amountInFloat)
         const wallet =  await this.getWallet(user_id)
         return wallet
     },
 
     async withdraw(user_id:string,amount:number){
-         await db('wallet').where({user_id}).decrement("balance",amount)
+        const  amountInFloat= this.toFloat(amount)
+         await db('wallet').where({user_id}).decrement("balance",amountInFloat)
          const wallet =  await this.getWallet(user_id)
          return wallet
     },
 
     async transfer(user_id:string,amount:number,recipient_email:string){
+        const  amountInFloat= this.toFloat(amount)
         const recipient = await authService.getUser({email:recipient_email})
-        await db('wallet').where({user_id}).decrement("balance",amount)
-        await db('wallet').where({user_id:recipient.user_id}).increment("balance",amount)
+        await db('wallet').where({user_id}).decrement("balance",amountInFloat)
+        await db('wallet').where({user_id:recipient.user_id}).increment("balance",amountInFloat)
         const wallet = await this.getWallet(user_id)
         return wallet
-    }
+    },
+    toFloat(amount: number):number {
+        return parseFloat(amount.toFixed(2));
+      }
 
 }

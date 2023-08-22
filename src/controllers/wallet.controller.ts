@@ -6,7 +6,7 @@ export default {
         try {
             const {user_id} = res.locals.user
             const response = await walletService.topUp(user_id,req.body.amount)
-            return res.status(200).json({...response})
+            return res.status(200).json({status:"top up successful",...response})
 
             
         } catch (error:any) {
@@ -19,7 +19,7 @@ export default {
         try {
             const {user_id} = res.locals.user
             const response = await walletService.withdraw(user_id,req.body.amount)
-            return res.status(200).json({...response})
+            return res.status(200).json({status:"withdrawal successful",...response})
 
             
         } catch (error:any) {
@@ -33,7 +33,7 @@ export default {
         try {
             const {user_id} = res.locals.user
             const response = await walletService.transfer(user_id,req.body.amount,req.body.email)
-            return res.status(200).json({...response})
+            return res.status(200).json({status:"transfer successful",...response})
 
 
             
