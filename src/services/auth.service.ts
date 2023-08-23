@@ -42,7 +42,7 @@ export default {
             
         } catch (error:any) {
            if(error.code == "ER_DUP_ENTRY"){
-            throw new CustomError("user already exists",500)
+            throw new CustomError("user already exists",409)
            }
 
             
@@ -57,9 +57,9 @@ export default {
     async login(body:userDetails){
         
             const user = await this.getUser({email:body.email})
-            console.log(user)
+      
             const status = await argon2.verify(user.password,body.password)
-            console.log(status)
+         
       if(status === true){
         delete user.password
         const token = await jwtService.sign(user)

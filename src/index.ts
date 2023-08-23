@@ -14,12 +14,22 @@ app.use(errorHandler)
 
 
 
+
+
 const server = http.createServer(app);
 const port =  process.env.port || 3000
-server.listen(port,()=>{
-    console.log(`Servidor rodando na porta ${port}`)
 
 
-})
+    server.listen(port,()=>{
+        console.log(`Servidor rodando na porta ${port}`)
+    
+    
+    })
 
-export default server
+
+    export default server
+
+
+ 
+
+

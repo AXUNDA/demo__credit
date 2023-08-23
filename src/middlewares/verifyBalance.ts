@@ -9,7 +9,7 @@ export default async function verifyBalance(req: Request, res: Response, next: N
         const wallet = await walletService.getWallet(user_id)
      
       
-        if(amount > wallet.balance){
+        if( parseFloat(amount.toFixed(2)) >  parseFloat(wallet.balance.toFixed(2))){
             return res.status(400).json({
                 success:false,
                 error:"insufficient funds"
