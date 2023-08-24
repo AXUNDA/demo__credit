@@ -135,6 +135,17 @@ describe("app unit tests",()=>{
        
 
       })
+      it("should return a status of 401 because no auth token was provided",async ()=>{
+        const res =   await request(server).post("/wallet/topup") 
+        .send({
+         amount:50
+       
+        })
+         expect(res.statusCode).toEqual(401) 
+       
+       
+
+      })
       it("should withdraw funds from a  users wallet",async ()=>{
         const res =   await request(server).post("/wallet/withdraw") .set('Authorization', 'Bearer ' + token)
         .send({
