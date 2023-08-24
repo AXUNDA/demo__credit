@@ -7,6 +7,7 @@ import dotenv from "dotenv"
 import http from "http"
 dotenv.config()
 
+
 app.use(express.json())
 app.use(morgan("dev"))
 app.use('/',routes)
@@ -22,6 +23,7 @@ const port =  process.env.port || 3000
 
     server.listen(port,()=>{
         console.log(`Servidor rodando na porta ${port}`)
+       
     
     
     })

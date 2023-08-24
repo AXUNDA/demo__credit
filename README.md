@@ -32,7 +32,8 @@ Before running the application, make sure you have the following installed:
 - Configure the Database:
 - this is the database entity relationship diagram [![er -diagram](https://res.cloudinary.com/dzm0ntibm/image/upload/v1692866600/Untitled_Workspace_1_fgg5p0.png "er -diagram")](https://res.cloudinary.com/dzm0ntibm/image/upload/v1692866600/Untitled_Workspace_1_fgg5p0.png "er -diagram")
    
-   create a  `.env` file then copy the contents of  `.env.example` and replace the various database connection variables with your own database variables,then run `npm run knex:migrate` to create tables from the migration file in the db folder
+   create a  `.env` file then copy the contents of  `.env.example` and replace the various  variables with your own  variables , please note that they are 2  `.env` files ,one in the root directory and another one in the db folder make sure you use both of them else the application will not work.   run `npm run knex:migrate` to create tables from the migration file in the db folder
+   
 
 - Run the Application in the development with  `npm run dev`,to create a production build ,run the command ' `npm run build` ,to run unit test run  `npm run test` to run in production mode run  `npm start`
 

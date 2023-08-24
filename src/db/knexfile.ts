@@ -1,6 +1,10 @@
 import * as path from 'path';
+import   db_config from '../config/db_config';
+import dotenv from "dotenv"
 
-// import knex,{Knex} from 'knex';
+
+
+
 
 
 
@@ -8,20 +12,20 @@ const  config: any = {
   development: {
     client: 'mysql2',
     connection: {
-      host: '127.0.0.1',
-      port : 3306,
+      host: db_config.host,
+      port :db_config.port,
 
-      user: 'root',
-      password: 'dondizzy12',
-      database: 'lendsqr',
+      user: db_config.db_user,
+      password: db_config.password,
+      database: db_config.db,
     },
     migrations: {
       directory: path.join(__dirname, 'migrations'),
-      // tableName: "knex_migrations", 
+     
     },
   },
 };
-// const db = knex(config.development)
+
 
 export default config
 
