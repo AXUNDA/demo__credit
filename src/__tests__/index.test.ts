@@ -125,7 +125,7 @@ describe("app unit tests",()=>{
 
       })
       it("should top up users wallet",async ()=>{
-        const res =   await request(server).post("/wallet/topup") .set('Authorization', 'Bearer ' + token)
+        const res =   await request(server).post("/wallet/deposit") .set('Authorization', 'Bearer ' + token)
         .send({
          amount:50
        

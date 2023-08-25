@@ -14,7 +14,9 @@ export async function up(knex: Knex): Promise<void> {
 
     table.string('email').unique().notNullable();
     table.string('password').notNullable();
-    table.timestamps(true);
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+   
+
   });
 
   await knex.schema.createTable('wallet', function (table) {
@@ -23,7 +25,8 @@ export async function up(knex: Knex): Promise<void> {
 
     table.uuid('user_id').unique().notNullable().references('user_id').inTable('users');
     table.float('balance').notNullable().defaultTo(0.00).notNullable();
-    table.timestamps(true);
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+   
   });
   await knex.schema.createTable('transaction_history', function (table) {
     
@@ -39,7 +42,8 @@ export async function up(knex: Knex): Promise<void> {
 
 
     table.float('amount').notNullable()
-    table.timestamps(true);
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+ 
   });
 }
 
