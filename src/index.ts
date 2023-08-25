@@ -13,8 +13,6 @@ app.use(morgan("dev"))
 app.use('/',routes)
 app.use(errorHandler)
 
-
-
 const server = http.createServer(app);
 const port =  process.env.port || 3000
 
