@@ -2,6 +2,8 @@
 
 This is a simple Node.js and Express.js demo application that allows users to perform wallet-related actions, including signing up, signing in, creating a wallet, adding money, withdrawing money, and transferring money to other users.
 
+[google docs ](https://docs.google.com/document/d/1uGM5Th8crmvjrv0yHxzA4DG8s5MTtrC7hn8K6GF1xVE/edit?usp=sharing "google docs ")
+
 ## Features
 
 - User Signup: New users can sign up using their email and password.
