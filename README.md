@@ -46,8 +46,14 @@ The app will be accessible at `http://localhost:3000`.
 - `POST /auth/signin`: Sign in a user. Requires `email` and `password` in the request body. and return a jwt token
 
 - `POST /wallet/deposit`: Deposit money into the user's wallet. Requires `amount` in the request body.
+
 - `POST /wallet/withdraw`: Withdraw money from the user's wallet. Requires `amount` in the request body.
+
 - `POST /wallet/transfer`: Transfer money to another user's wallet. Requires `email`  which is the recepients email and `amount` in the request body.
+
+- `GET /wallet/`: Get your current wallet balance.
+
+- `GET /wallet/history`: Get your  wallet transaction history
 
 ## Usage
 
