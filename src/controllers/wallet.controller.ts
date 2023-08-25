@@ -58,5 +58,18 @@ export default {
             
         }
 
+    },
+    async getHistory(req:Request,res:Response,next:NextFunction){
+        try {
+            const {user_id} = res.locals.user
+            const response = await walletService.getTransactionHistory(user_id)
+            return res.status(200).json({...response})
+
+            
+        } catch (error) {
+            next(error)
+
+            
+        }
     }
 }

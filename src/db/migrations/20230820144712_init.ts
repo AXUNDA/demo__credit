@@ -23,6 +23,22 @@ export async function up(knex: Knex): Promise<void> {
     table.float('balance').notNullable().defaultTo(0.00).notNullable();
     table.timestamps(true, true);
   });
+  await knex.schema.createTable('transaction_history', function (table) {
+    
+    table.string('transaction_id').primary().notNullable()
+    table.uuid('sender_user_id').notNullable().references('user_id').inTable('users');
+    table.string('recipient_user_id').notNullable()
+
+
+
+    table.string('sender').notNullable()
+    table.string('beneficiary').notNullable()
+    table.enum('transaction_type', ['deposit', 'withdrawal', 'transfer']).notNullable()
+
+
+    table.float('amount').notNullable()
+    table.timestamps(true, true);
+  });
 }
 
 export async function down(knex: Knex): Promise<void> {
