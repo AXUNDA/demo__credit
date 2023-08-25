@@ -48,7 +48,7 @@ describe("app unit tests",()=>{
       
 
       })
-      it("should fail because a user with this email already exists",async ()=>{
+      it("should return a status of 409*conflict* because a user with this email already exists",async ()=>{
         const res =   await request(server).post("/auth")
            .send({
              email: "exapmle1@example.com",
@@ -62,7 +62,7 @@ describe("app unit tests",()=>{
          
    
          })
-      it("should fail because a valid email was not passed",async ()=>{
+      it("should return a status of 400 because a valid email was not passed",async ()=>{
         const res =   await request(server).post("/auth")
            .send({
              email: "exapmle1",
@@ -71,7 +71,7 @@ describe("app unit tests",()=>{
            })
             expect(res.statusCode).toEqual(400) 
          })
-         it("should fail because password is less than 6 digits long ",async ()=>{
+         it("should return a status of 400 because password is less than 6 digits long ",async ()=>{
             const res =   await request(server).post("/auth")
                .send({
                  email: "exapmle3@mail.com",
@@ -157,7 +157,7 @@ describe("app unit tests",()=>{
        
 
       })
-      it("should fail because a user is trying to withdraw more funds than what is in their wallet",async ()=>{
+      it("should return a status of 400 because a user is trying to withdraw more funds than what is in their wallet",async ()=>{
         const res =   await request(server).post("/wallet/withdraw") .set('Authorization', 'Bearer ' + token)
         .send({
          amount:70
@@ -168,7 +168,7 @@ describe("app unit tests",()=>{
        
 
       })
-      it("should withdraw transfer funds to user 2",async ()=>{
+      it("should  transfer funds to user 2",async ()=>{
         const res =   await request(server).post("/wallet/transfer") .set('Authorization', 'Bearer ' + token)
         .send({
             email: "exapmle2@example.com",
@@ -180,7 +180,7 @@ describe("app unit tests",()=>{
        
 
       })
-      it("should fail because a user is trying to transfer funds to themselves",async ()=>{
+      it("should ret0rn a status of 409 because a user is trying to transfer funds to themselves",async ()=>{
         const res =   await request(server).post("/wallet/transfer") .set('Authorization', 'Bearer ' + token)
         .send({
             email: "exapmle1@example.com",
