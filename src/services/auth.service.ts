@@ -3,6 +3,8 @@ import * as argon2 from "argon2";
 import CustomError from "../errors/custom_error";
 import jwtService from "./jwt.service";
 import walletService from "./wallet.service";
+import uuid from 'uuid-random';
+
 
 
 type userDetails={
@@ -17,7 +19,7 @@ export default {
         try {
             const hash =  await argon2.hash(body.password)
           
-            const response = await db("users").insert({email:body.email.toLowerCase(),password:hash})
+            const response = await db("users").insert({email:body.email.toLowerCase(),password:hash,user_id:uuid()})
             if(response.length > 0){
                 const user = await this.getUser({email:body.email})
                 const wallet = await walletService.createWallet(user.user_id)

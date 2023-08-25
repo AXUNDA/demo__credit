@@ -1,4 +1,5 @@
 import jwt  from "jsonwebtoken";
+import CustomError from "../errors/custom_error";
 
 
 
@@ -15,7 +16,7 @@ export default {
             return await jwt.verify(token,process.env.jwt_key as string)
             
         } catch (error:any) {
-            return false
+          throw new CustomError('un-authorized',409)
             
         }
 

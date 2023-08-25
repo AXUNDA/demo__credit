@@ -136,7 +136,7 @@ describe("app unit tests",()=>{
 
       })
       it("should return a status of 401 because no auth token was provided",async ()=>{
-        const res =   await request(server).post("/wallet/topup") 
+        const res =   await request(server).post("/wallet/deposit") 
         .send({
          amount:50
        
