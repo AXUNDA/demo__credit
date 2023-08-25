@@ -9,4 +9,10 @@ const wallet_routes_1 = __importDefault(require("./wallet.routes"));
 const router = express_1.default.Router();
 router.use('/auth', auth_routes_1.default);
 router.use('/wallet', wallet_routes_1.default);
+router.get('/', (req, res, next) => {
+    res.status(200).json({
+        status: "active",
+        docs: "https://github.com/AXUNDA/demo__credit"
+    });
+});
 exports.default = router;
