@@ -23,14 +23,31 @@ var token = null
 
 
 describe("app unit tests",()=>{
+  beforeAll(async()=>{
+    await db.transaction(async(trx)=>{
+      await trx.delete("*").from("transaction_history")
+      await trx.delete("*").from("wallet")
+
+
+      await trx.delete("*").from("users")
+
+    })
+   
+
+
+  })
    
 
     afterAll(async()=>{
-      
-        await db.delete("*").from("wallet")
-        await db.delete("*").from("users")
-        await server.close()
+      await db.transaction(async(trx)=>{
+        await trx.delete("*").from("transaction_history")
+        await trx.delete("*").from("wallet")
 
+
+        await trx.delete("*").from("users")
+  
+      })
+      server.close()
     })
    
     
