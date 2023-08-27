@@ -42,8 +42,6 @@ export async function up(knex: Knex): Promise<void> {
     table.string('sender').notNullable()
     table.string('beneficiary').notNullable()
     table.enum('transaction_type', ['deposit', 'withdrawal', 'transfer']).notNullable()
-
-
     table.float('amount').notNullable()
     table.timestamps(true,true)
 
