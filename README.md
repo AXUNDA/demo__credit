@@ -4,6 +4,9 @@ This is a simple Node.js and Express.js demo application that allows users to pe
 
 [google docs ](https://docs.google.com/document/d/1uGM5Th8crmvjrv0yHxzA4DG8s5MTtrC7hn8K6GF1xVE/edit?usp=sharing "google docs ")
 
+[Live url](https://charles-emmanuel-lendsqr-be-test.onrender.com "live url")
+
+>  N/B :This live url is on a free server,if left idle for 1 hour,it goes to sleep ,and takes about 30 seconds to spin up once a request is sent,you may have to wait 30 seconds to receive a response from the server for your first request.
 ## Features
 
 - User Signup: New users can sign up using their email and password.
@@ -61,7 +64,7 @@ The app will be accessible at `http://localhost:3000`.
 ## Usage
 
 1. Sign up for a new account using the `/auth` endpoint.
-2. Sign in using the `/signin` endpoint.
+2. Sign in using the `/auth/signin` endpoint.
 4. Add money to your wallet using the `/wallet/deposit` endpoint.
 5. Withdraw money from your wallet using the `/wallet/withdraw` endpoint.
 6. Transfer money to another user using the `/wallet/transfer` endpoint.
