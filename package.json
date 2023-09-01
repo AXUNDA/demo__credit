@@ -6,7 +6,7 @@
     "dev": "nodemon src/index.ts",
     "start": "node build/index.js",
     "build": "tsc -p .",
-    "test": " npx jest --detectOpenHandles"
+    "test": "npx jest --detectOpenHandles"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.10",
