@@ -18,8 +18,8 @@ export default async function verifyBalance(req: Request, res: Response, next: N
         }
         return next()
         
-    } catch (error) {
-        return res.status(500).json({error:"an error occurred"})
+    } catch (error:any) {
+        return res.status(500).json({error:error.message})
         
     }
 
