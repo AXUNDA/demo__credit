@@ -7,7 +7,7 @@
     "start": "node build/index.js",
    
     "build": " tsc -p .",
-    "test": " npx jest --detectOpenHandles",
+    "test": " npx jest --detectOpenHandles"
 
   },
   "devDependencies": {
