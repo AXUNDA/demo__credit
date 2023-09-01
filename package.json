@@ -4,11 +4,11 @@
     "knex:migrate": "knex --knexfile src/db/knexfile.ts migrate:latest",
     "knex:migrate:rollback": "knex --knexfile src/db/knexfile.ts migrate:rollback",
     "dev": "nodemon src/index.ts",
-    "start": "node src/index.js",
+    "start": "node build/index.js",
    
     "build": " tsc -p .",
     "test": " npx jest --detectOpenHandles",
-    "postbuild": "mv node_modules ./src"
+
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.10",
