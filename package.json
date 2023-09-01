@@ -8,7 +8,7 @@
    
     "build": " tsc -p .",
     "test": " npx jest --detectOpenHandles",
-    "postbuild": "mv node_modules ./dist"
+    "postbuild": "mv node_modules ./build"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.10",
