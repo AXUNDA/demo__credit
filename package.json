@@ -5,7 +5,8 @@
     "knex:migrate:rollback": "knex --knexfile src/db/knexfile.ts migrate:rollback",
     "dev": "nodemon src/index.ts",
     "start": "node build/index.js",
-    "build": "tsc -p .",
+   
+    "build": " tsc -p .",
     "test": " npx jest --detectOpenHandles"
   },
   "devDependencies": {
