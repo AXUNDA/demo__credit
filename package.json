@@ -4,7 +4,7 @@
     "knex:migrate": "knex --knexfile src/db/knexfile.ts migrate:latest",
     "knex:migrate:rollback": "knex --knexfile src/db/knexfile.ts migrate:rollback",
     "dev": "nodemon src/index.ts",
-    "start": "node build/index.js",
+    "start": "node src/index.js",
    
     "build": " tsc -p .",
     "test": " npx jest --detectOpenHandles",
