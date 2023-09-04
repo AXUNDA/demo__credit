@@ -6,7 +6,8 @@ This is a simple Node.js and Express.js demo application that allows users to pe
 
 [Live url](https://charles-emmanuel-lendsqr-be-test.onrender.com "live url")
 
->  N/B :This live url is on a free server,if left idle for 1 hour,it goes to sleep ,and takes about 30 seconds to spin up once a request is sent,you may have to wait 30 seconds to receive a response from the server for your first request.
+> N/B :This live url is on a free server,if left idle for 1 hour,it goes to sleep ,and takes about 80 seconds to spin up once a request is sent,you may have to wait for 80 seconds to receive a response from the server for your first request.
+
 ## Features
 
 - User Signup: New users can sign up using their email and password.
@@ -27,22 +28,17 @@ Before running the application, make sure you have the following installed:
 
 - Clone the repository:
 
-
 - Navigate to the project directory:
-
 
 - Install the dependencies:
 
-
 - Configure the Database:
 - this is the database entity relationship diagram [![er -diagram]
-[![E-r diagram](https://res.cloudinary.com/dzm0ntibm/image/upload/v1692939118/Untitled_Workspace_2_df75hk.png "E-r diagram")](https://res.cloudinary.com/dzm0ntibm/image/upload/v1692939118/Untitled_Workspace_2_df75hk.png "E-r diagram")
-   
-   create a  `.env` file then copy the contents of  `.env.example` and replace the various  variables with your own  variables , please note that they are 2  `.env` files ,one in the root directory and another one in the db folder make sure you use both of them else the application will not work.   run `npm run knex:migrate` to create tables from the migration file in the db folder
-   
+  [![E-r diagram](https://res.cloudinary.com/dzm0ntibm/image/upload/v1692939118/Untitled_Workspace_2_df75hk.png "E-r diagram")](https://res.cloudinary.com/dzm0ntibm/image/upload/v1692939118/Untitled_Workspace_2_df75hk.png "E-r diagram")
 
-- Run the Application in the development with  `npm run dev`,to create a production build ,run the command ' `npm run build` ,to run unit test run  `npm run test` to run in production mode run  `npm start`
+  create a `.env` file then copy the contents of `.env.example` and replace the various variables with your own variables , please note that they are 2 `.env` files ,one in the root directory and another one in the db folder make sure you use both of them else the application will not work. run `npm run knex:migrate` to create tables from the migration file in the db folder
 
+- Run the Application in the development with `npm run dev`,to create a production build ,run the command ' `npm run build` ,to run unit test run `npm run test` to run in production mode run `npm start`
 
 The app will be accessible at `http://localhost:3000`.
 
@@ -55,27 +51,26 @@ The app will be accessible at `http://localhost:3000`.
 
 - `POST /wallet/withdraw`: Withdraw money from the user's wallet. Requires `amount` in the request body.
 
-- `POST /wallet/transfer`: Transfer money to another user's wallet. Requires `email`  which is the recepients email and `amount` in the request body.
+- `POST /wallet/transfer`: Transfer money to another user's wallet. Requires `email` which is the recepients email and `amount` in the request body.
 
 - `GET /wallet/`: Get your current wallet balance.
 
-- `GET /wallet/history`: Get your  wallet transaction history
+- `GET /wallet/history`: Get your wallet transaction history
 
 ## Usage
 
 1. Sign up for a new account using the `/auth` endpoint.
 2. Sign in using the `/auth/signin` endpoint.
-4. Add money to your wallet using the `/wallet/deposit` endpoint.
-5. Withdraw money from your wallet using the `/wallet/withdraw` endpoint.
-6. Transfer money to another user using the `/wallet/transfer` endpoint.
+3. Add money to your wallet using the `/wallet/deposit` endpoint.
+4. Withdraw money from your wallet using the `/wallet/withdraw` endpoint.
+5. Transfer money to another user using the `/wallet/transfer` endpoint.
 
 ## Security Considerations
 
-- **Authentication**:   JWT (JSON Web Tokens) is used to protect all wallet enpoints please pass the jwt token received from the login or signup route in the headers inthis format  `Authorization : Bearer token`  to protect user accounts and endpoints.
+- **Authentication**: JWT (JSON Web Tokens) is used to protect all wallet enpoints please pass the jwt token received from the login or signup route in the headers inthis format `Authorization : Bearer token` to protect user accounts and endpoints.
 
 - **Input Validation**: input validation is implemented using [Zod](https://zod.dev/ "Zod").
-- **Error Handling**: All errors are handled properly,with an express middleware  .
-
+- **Error Handling**: All errors are handled properly,with an express middleware .
 
 ## Disclaimer
 
